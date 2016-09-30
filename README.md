@@ -1,2 +1,3 @@
-# data-mining-assigments
-Data Mining Assigments
+# Data Mining Exercises
+
+Data Mining Exercises
