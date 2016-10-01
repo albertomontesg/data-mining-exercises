@@ -1,0 +1,5 @@
+friend	823
+little	1234
+my	6027
+say	1199
+to	50411
