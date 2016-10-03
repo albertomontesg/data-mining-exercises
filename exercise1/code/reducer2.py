@@ -21,10 +21,12 @@ for line in sys.stdin:
     count = int(count)
 
     if not current_char:
+        # First pass
         current_char = char
         current_word = word
         current_count = count
     elif char != current_char:
+        # When char changes the current heap should be printed
         print_heap(heap)
         heap = []
         current_char = char
@@ -34,6 +36,7 @@ for line in sys.stdin:
         if word == current_word:
             current_count += count
         else:
+            # When the word on the current letter changes
             if current_count >= A and current_count <= B:
                 word = (current_word, current_count)
                 if len(heap) == CHAR_LIMIT:
