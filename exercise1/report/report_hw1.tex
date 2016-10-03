@@ -1,6 +1,32 @@
 \documentclass{ethz_report}
-\usepackage{blindtext}
+\usepackage{listings}
+\usepackage{color}
 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{1,1,1}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+    frame=lines
+}
+\lstset{style=mystyle}
 
 \title{Assigment 1 - MapReduce}
 \subject{Data Mining: Learning from Large Datasets}
@@ -11,8 +37,36 @@
 \begin{document}
 \maketitle
 
-\section{Overview}
-\blindtext
+\section{Problem 1: Approximation of the English Dictionary}
+
+For this problem, the Map function consist on detect all the words (with a Regex expression
+extracting them) as first step. At each word found, it returns the word as key and a one
+indicating one found of the word. With this approach, the counting of all the appearance of the
+words are done at the reducer function.
+
+\lstinputlisting[language=Python, caption=mapper1.py]{../code/mapper1.py}
+
+As specified, the Reducer opperation keeps a counter of how many times a word has appeared, and when
+a new word appeards, it prints the total amount of times the previous word has appeared.
+
+\lstinputlisting[language=Python, caption=reducer1.py]{../code/reducer1.py}
+
+
+\section{Problem 2: A Basic English Dictionary}
+
+For this second problem, as the Map function can be used the same as in Problem 1. The challange is
+in modifying the Reducer function.
+
+\lstinputlisting[language=Python, caption=mapper2.py]{../code/mapper2.py}
+
+The Reducer opperation keeps track of the current character of the dictionary and stores the
+words and counts in a heap until the maximum capacity per character which specified as 30 per
+letter. To store the word in the heap, the count of the word must fullfill the requirements set by
+the problem statement.
+The count of the words are kept track as in the first problem. Finally when the first letter changes
+the heap is returned and as it has been stored, it is return sorted alphabeticcaly.
+
+\lstinputlisting[language=Python, caption=reducer2.py]{../code/reducer2.py}
 
 
 \end{document}

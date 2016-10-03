@@ -14,16 +14,15 @@
 \def\email#1{\def\@email{#1}}
 
 \renewcommand\maketitle{
-\hrule
-\begin{center}
-    \vspace{.4cm}
-    \bf{\Huge \@title} \\
-    \vspace{.3cm}
-    \large \@subject
-    \vspace{.2cm}
-\end{center}
-{\bf \@author} (\@email) \hspace{\fill} \@date \\
-\hrule
-
+    \hrule
+    \begin{center}
+        \vspace{.4cm}
+        \bf{\Huge \@title} \\
+        \vspace{.3cm}
+        \large \@subject
+        \vspace{.2cm}
+    \end{center}
+    {\bf \@author} (\@email) \hspace{\fill} \@date \\
+    \hrule
 }
 \endinput
