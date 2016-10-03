@@ -17,7 +17,8 @@ def print_heap(heap):
 for line in sys.stdin:
     line = line.strip()
 
-    char, word, count = line.split('\t', 2)
+    word, count = line.split('\t', 2)
+    char = word[0]
     count = int(count)
 
     if not current_char:

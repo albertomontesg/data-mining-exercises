@@ -8,4 +8,4 @@ input_stream = io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8', errors='igno
 for line in input_stream.readlines():
     for match in pattern.findall(line):
         word = match.lower()
-        print('{}\t{}\t{}'.format(word[0], word, 1))
+        print('{}\t{}'.format(word, 1))
