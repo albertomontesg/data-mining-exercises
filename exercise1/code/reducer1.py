@@ -10,11 +10,11 @@ for line in sys.stdin:
     count = int(count)
 
     if word == current_word:
-        current_count += 1
+        current_count += count
     else:
         if current_word is not None:
             print('{}\t{}'.format(current_word, current_count))
         current_word = word
-        current_count = 1
+        current_count = count
 
 print('{}\t{}'.format(current_word, current_count))
