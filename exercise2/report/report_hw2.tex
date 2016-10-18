@@ -55,7 +55,35 @@ present a probability of collision which depends on the angle as follows:
 
 \subsection*{Demonstration}
 
+Lets consider the plane formed by the vectors $\mathbf{u}$ and $\mathbf{v}$. In addition, $\mathbf{w}^T\mathbf{v} = \mathbf{\tilde{w}}^T\mathbf{v}$ being $\mathbf{\tilde{w}}$ the projection of $\mathbf{w}$ that lies to the plane defined by $\mathbf{u}$ and $\mathbf{v}$. With this definition, it can be also considered that the distribution of the angle formed by any of the vectors it is uniformly distributed.
 
+With this definition, we can take into account that:
+
+\begin{equation}
+    \mathbf{w}^T\mathbf{u} > 0 \text{ iif } angle(\mathbf{w}) > angle(\mathbf{u})
+\end{equation}
+
+With this property, it can be easily deduced that the hash function will give a collision if the random vector $\mathbf{w}$ has an angle larger than the angle of the two vectors $\mathbf{u}$ and $\mathbf{v}$ or if the angle is lower than both of them. (Lets consider that the $angle(\mathbf{u}) > angle(\mathbf{v})$)
+
+\begin{equation}
+    sign(\mathbf{w}^T\mathbf{u}) = sign(\mathbf{w}^T\mathbf{u}) = 1 \text{ iif } angle(\mathbf{w}) > angle(\mathbf{u}) > angle(\mathbf{v}) \\
+\end{equation}
+\begin{equation}
+    sign(\mathbf{w}^T\mathbf{u}) = sign(\mathbf{w}^T\mathbf{u}) = -1 \text{ iif } angle(\mathbf{u}) > angle(\mathbf{v}) > angle(\mathbf{w})
+\end{equation}
+
+So the probability of collision will depend on the region where the vector $\mathbf{\tilde{w}}$ lies and the relation between its angle and the angle of $\mathbf{u}$ and $\mathbf{v}$.
+The probability of collision will be the complementary to the probability of $\mathbf{\tilde{w}}$ to lie between the $\mathbf{u}$ and $\mathbf{v}$ vectors.
+
+\begin{equation}
+    P[h_w(\mathbf{u}) = h_w(\mathbf{v})] = 1 - P(angle(\mathbf{u}) > angle(\mathbf{w}), angle(\mathbf{w}) > angle(\mathbf{v}))
+\end{equation}
+
+As the distribution of the angles are uniformly distributed, the probability of collision can be easily deduced.
+
+\begin{equation}
+    P[h_w(\mathbf{u}) = h_w(\mathbf{v})] = 1 - angle(\mathbf{u}, \mathbf{v}) / \pi
+\end{equation}
 
 \subsection*{Implementation}
 
